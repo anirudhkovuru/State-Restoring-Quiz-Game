@@ -1,0 +1,26 @@
+<% provide(:title, 'Quiz') %>
+
+
+<ol class="quiz">
+  <% @quiz.each do |question| %>
+    <li>
+  	  <%= question.question %>
+      <% if current_user.admin? %>
+        ( <%= link_to "update", edit_question_path(question) %>
+        | <%= link_to "delete", question, method: :delete,
+                                      data: { confirm: "You sure?" } %> )
+      <% end %>
+  	  <br/>
+  	  A. <%= question.opt1 %>
+  	  <br/>
+  	  B. <%= question.opt2 %>
+  	  <br/>
+  	  C. <%= question.opt3 %>
+  	  <br/>
+  	  D. <%= question.opt4 %>
+  	  <br/>
+      Answer: <%= question.answer %>
+      <br/><br/>
+    </li>
+  <% end %>
+</ol>

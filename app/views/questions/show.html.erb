@@ -1,0 +1,29 @@
+<% provide(:title, @quiz.genre) %>
+<% if @max > @id %>
+<% provide(:button_text, 'Next') %>
+<% else %>
+<% provide(:button_text, 'Finish') %>
+<% end %>
+
+<br/>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+<%= form_for @quiz, :url => '/check', :html => {method: :post} do |f| %>
+<h4><%= @id+1 %>) <%= @quiz.question %></h4><br/>
+
+  <%= f.check_box :opt1, { class: "answerOptions" }, "A", "" %><%= @quiz.opt1 %><br/><br/>
+  <%= f.check_box :opt2, { class: "answerOptions" }, "B", "" %><%= @quiz.opt2 %><br/><br/>
+  <%= f.check_box :opt3, { class: "answerOptions" }, "C", "" %><%= @quiz.opt3 %><br/><br/>
+  <%= f.check_box :opt4, { class: "answerOptions" }, "D", "" %><%= @quiz.opt4 %><br/><br/>
+
+  <br/>
+  <%= f.hidden_field :genre, :value => @quiz.genre %>
+  <%= f.hidden_field :id, :value => @id %>
+  <%= f.submit yield(:button_text), class: "btn btn-primary" %>
+<% end %>
+<br/>
+</div>
+</div>
+
+

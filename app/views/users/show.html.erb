@@ -1,0 +1,50 @@
+<% provide(:title, @user.name) %>
+<div class="row">
+  <aside class="col-md-4">
+    <section class="user_info">
+      <h1>
+        <%= @user.name %>
+      </h1>
+    </section>
+  </aside>
+</div>
+<h2>History</h2>
+<ul>
+<% if current_user.admin? %>
+<li>
+  <%= link_to "India", questions_path(:genre => "History-India") %>
+</li>
+<li>
+  <%= link_to "Za Warudo", questions_path(:genre => "History-Za Warudo") %>
+</li>
+</ul>
+<br/>
+<h2>Games</h2>
+<ul>
+<li>
+  <%= link_to "Video Games", questions_path(:genre => "Games-Video Games") %>
+</li>
+<li>
+  <%= link_to "Board Games", questions_path(:genre => "Games-Board Games") %>
+<% else %>
+<li>
+  <%= link_to "India", question_path(:genre => "History-India", :id => @user.qid1) %>: Score = <%= @user.score1 %>
+</li>
+<li>
+  <%= link_to "Za Warudo", question_path(:genre => "History-Za Warudo", :id => @user.qid2) %>: Score = <%= @user.score2 %>
+</li>
+</ul>
+<br/>
+<h2>Games</h2>
+<ul>
+<li>
+  <%= link_to "Video Games", question_path(:genre => "Games-Video Games", :id => @user.qid3) %>: Score = <%= @user.score3 %>
+</li>
+<li>
+  <%= link_to "Board Games", question_path(:genre => "Games-Board Games", :id => @user.qid4) %>: Score = <%= @user.score4 %>
+</li>
+<% end %>
+</ul>
+<% if current_user.admin? %>
+  <%= link_to "Create new question", new_question_path %>
+<% end %>
