@@ -14,10 +14,25 @@ start a new quiz.
 - The users​ have an option of viewing which quizzes they have attempted/not-attempted and the respective scores in each quiz.
 
 ## Instructions
-- To start the app, run the server by running the following on the terminal in the main directory:
+**Note:- Ruby on Rails should be installed**
+- Change into the main directory.
+- Firstly install all the dependecies for the app by running:
+
+> $ bundle install
+
+- Initialise the database of the app by running:
+
+> $ rails db:create
+
+- Fill the database with the admin credentials and the dummy users by running:
+
+> $ rails db:migrate:reset
+> $ rails db:seed
+
+- Lastly run the servver by running:
 
 > $ rails server
 
-- Then open the url "http://localhost:3000/" on your web browser.
+- Then open the url "http://localhost:3000/" on your web browser to access the quiz.
 
-**Note: The admin email is "anirudh@gmail.com" and the password is "foobar".**
+**Note: The admin email is "anirudh@gmail.com" and the password is "foobar". The dummy emails are in the form of "example-[i]@railstutorial.org" where i varies from 1 to 100 and their password is "password".**
