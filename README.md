@@ -26,7 +26,7 @@ start a new quiz.
 
 - Fill the database with the admin credentials and the dummy users by running:
 
-> $ rails db:migrate:reset
+> $ rails db:migrate:reset \
 > $ rails db:seed
 
 - Lastly run the servver by running:
